@@ -1,6 +1,5 @@
 package com.domain.spider.proxy.GouBanJia;
 
-import com.domain.common.utils.HttpRequest;
 import com.domain.common.utils.JsonHelper2;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,9 +21,9 @@ public class Crawler {
 
         try {
             // Document doc = Jsoup.parse(new URL("http://www.goubanjia.com/"), 1000);
-            // Document doc = Jsoup.connect("http://www.goubanjia.com/").get();
-            String ret = new HttpRequest().get("http://www.goubanjia.com/", null, "UTF-8");
-            Document doc = Jsoup.parse(ret);
+            Document doc = Jsoup.connect("http://www.goubanjia.com/").get();
+            /*String ret = new HttpRequest().get("http://www.goubanjia.com/", null, "UTF-8");
+            Document doc = Jsoup.parse(ret);*/
             Element element = doc.getElementById("list");
             Elements trs = element.select("table>tbody>tr");
             List<Proxy> proxies = new ArrayList<>();
